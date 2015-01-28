@@ -1,0 +1,35 @@
+{
+  "name": "opsway/magento-composer-core-deploy",
+  "description": "Composer installer deploy command for Magento core",
+  "keywords": [
+    "composer-installer",
+    "magento-core"
+  ],
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "homepage": "https://github.com/opsway/magento-composer-core-deploy",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
+    }
+  ],
+  "authors": [
+    {
+      "name": "OpsWay",
+      "email": "support@opsway.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "magento-hackathon/composer-command-integrator": "*"
+  },
+  "autoload": {
+    "psr-0": {
+      "OpsWay\\Composer\\Magento": "src/"
+    }
+  },
+  "extra": {
+    "composer-command-registry": ["OpsWay\\Composer\\Magento\\Command\\DeployCoreCommand"]
+  }
+}
