@@ -19,7 +19,7 @@ use MagentoHackathon\Composer\Magento\Installer;
  * @author Tiago Ribeiro <tiago.ribeiro@seegno.com>
  * @author Rui Marinho <rui.marinho@seegno.com>
  */
-class DeployCommand extends \Composer\Command\Command
+class DeployCoreCommand extends \Composer\Command\Command
 {
     protected function configure()
     {
@@ -50,8 +50,6 @@ EOT
         /**
          * @var $moduleInstaller \MagentoHackathon\Composer\Magento\Installer
          */
-        $moduleInstaller = $im->getInstaller("magento-core");
-
         $eventManager   = new EventManager;
         $deployManager  = new DeployManager($eventManager);
 
@@ -61,6 +59,7 @@ EOT
                 $io->write('Start magento deploy for ' . $event->getDeployEntry()->getPackageName());
             });
         }
+        $moduleInstaller = new Installer\CoreInstaller($io, $composer);//$im->getInstaller("magento-core");
 
         $extra          = $composer->getPackage()->getExtra();
         $sortPriority   = isset($extra['magento-deploy-sort-priority']) ? $extra['magento-deploy-sort-priority'] : array();
